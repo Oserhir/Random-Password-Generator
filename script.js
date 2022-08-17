@@ -6,10 +6,18 @@ let numbers = document.getElementById("numbers");
 let symbols = document.getElementById("symbols");
 let generate = document.getElementById("generate");
 
+let ArraysFromLowToHight = (min, max) => {
+  let Arr = [];
+  for (let i = min; i <= max; i++) {
+    Arr.push(i);
+  }
+  return Arr;
+};
+
 let Ucase = ArraysFromLowToHight(65, 90);
 let Lcase = ArraysFromLowToHight(97, 122);
-let Num = ArraysFromLowToHight(65, 90);
-let Syn = ArraysFromLowToHight(48, 57);
+let Num = ArraysFromLowToHight(48, 57);
+let Syn = ArraysFromLowToHight(33, 38);
 
 generate.addEventListener("click", () => {
   result.innerText = generateRandomPassword();
