@@ -23,38 +23,26 @@ let Syn = ArraysFromLowToHight(33, 38);
 generate.addEventListener("click", () => {
   let initialPass = [];
 
-  if (uppercase.checked) {
-    initialPass = [...initialPass, ...Ucase];
-  }
-  if (lowercase.checked) {
-    initialPass = [...initialPass, ...Lcase];
-  }
-  if (numbers.checked) {
-    initialPass = [...initialPass, ...Num];
-  }
-  if (symbols.checked) {
-    initialPass = [...initialPass, ...Syn];
-  }
+  uppercase.checked ? (initialPass = [...initialPass, ...Ucase]) : "";
+  lowercase.checked ? (initialPass = [...initialPass, ...Lcase]) : "";
+  numbers.checked ? (initialPass = [...initialPass, ...Num]) : "";
+  symbols.checked ? (initialPass = [...initialPass, ...Syn]) : "";
 
   let Password = "";
   for (let i = 0; i < Number(length.value); i++) {
     Password += randomPassword(initialPass);
   }
   result.innerText = Password;
+
+  uppercase.checked = false;
+  lowercase.checked = false;
+  numbers.checked = false;
+  symbols.checked = false;
 });
 
 let randomPassword = (initialPass) => {
   let RandomNumber = Math.floor(Math.random() * initialPass.length);
   return String.fromCharCode(initialPass[RandomNumber]);
-};
-
-let generateRandomPassword = () => {
-  let L = Number(length.value);
-  let text = "";
-  for (let i = 0; i < L; i++) {
-    text += randomPass(96, 126);
-  }
-  return text;
 };
 
 let randomPass = (min, max) => {
